@@ -3,12 +3,6 @@
   font-family: Gotham Rounded;
 }
 
-:root {
-  --hue-neutral: 200;
-  --hue-wrong: 0;
-  --hue-correct: 145;
-}
-
 body {
   --hue: var(--hue-neutral);
   padding: 0;
@@ -21,17 +15,9 @@ body {
   background-color: hsl(var(--hue), 100%, 20%);
 }
 
-body.correct {
-  --hue: var(--hue-correct);
-}
-
-body.wrong {
-  --hue: var(--hue-wrong);
-}
-
 .container {
-  width: 800px;
-  max-width: 80%;
+  width:800px;
+  max-width: 90%;
   background-color: white;
   border-radius: 5px;
   padding: 10px;
@@ -57,9 +43,7 @@ body.wrong {
 }
 
 .btn:hover {
-
 	background: #b7d8a0;
-	/*--水平方向 垂直方向 色--*/
 	box-shadow: 0 0 10px rgba(0,0,0,0);
 }
 
