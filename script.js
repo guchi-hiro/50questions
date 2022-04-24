@@ -112,7 +112,7 @@ const questions = [
     ]
   },
   {
-    question: 'この中で一番必要ないキーは?',
+    question: 'Keyboardの中で一番必要ないと思うKeyは?',
     answers: [
       { value: "down" , image: "<strong class=label>Page Down</strong>"},
 	  { value: "up" , image: "<strong class=label>Page Up</strong>"},
@@ -122,7 +122,7 @@ const questions = [
 	  { value: "home" , image: "<strong class=label>Home</strong>"},
 	  { value: "capslock" , image: "<strong class=label>Caps Lock</strong>"},
 	  { value: "end" , image: "<strong class=label>End</strong>"},
-	  { value: "pause" , image: "<strong class=label>Pause</strong>"}
+	  { value: "Other" , image: "<strong class=label>Others ..</strong>"}
     ]
   },
   {
