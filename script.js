@@ -28,6 +28,7 @@ function setNextQuestion(e) {
 
 function showQuestion(question) {
   questionElement.innerText = question.question
+  questionElement.style.fontSize = "26px"
   question.answers.forEach(answer => {
     const button = document.createElement('button')
     button.classList.add('btn')
