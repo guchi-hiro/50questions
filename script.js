@@ -1,3 +1,5 @@
+const labelName = document.getElementById('label-name')
+const inputName = document.getElementById('name')
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
@@ -6,6 +8,7 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 
 let currentQuestionIndex
 let answer = ''
+let name = ''
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -14,15 +17,18 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame() {
+  labelName.classList.add('hide')
+  inputName.classList.add('hide')
   startButton.classList.add('hide')
   currentQuestionIndex = 0
+  name = inputName.value
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
 
 function setNextQuestion(e) {
   resetState()
-  console.log("Q: " + currentQuestionIndex + " A: " + answer)
+  console.log("Name: " + name + "Q: " + currentQuestionIndex + " A: " + answer)
   showQuestion(questions[currentQuestionIndex])
 }
 
