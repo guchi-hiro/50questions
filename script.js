@@ -17,13 +17,19 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame() {
+  if (inputName.value == '') {
+    alert('Please input your name')
+
+  } else {
   labelName.classList.add('hide')
   inputName.classList.add('hide')
   startButton.classList.add('hide')
-  currentQuestionIndex = 0
+
+  currentQuestionIndex = 1
   name = inputName.value
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
+  }
 }
 
 function setNextQuestion(e) {
@@ -33,7 +39,7 @@ function setNextQuestion(e) {
 }
 
 function showQuestion(question) {
-  questionElement.innerText = question.question
+  questionElement.innerText = "Q: " + currentQuestionIndex + "  " + question.question
   questionElement.style.fontSize = "26px"
   question.answers.forEach(answer => {
     const button = document.createElement('button')
