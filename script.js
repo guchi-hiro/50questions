@@ -54,9 +54,9 @@ function resetState() {
 }
 
 function selectAnswer(e) {
-	
+
   console.log(e.target.parentNode.tagName)
-  
+
   const tagName = e.target.parentNode.tagName
   let selectedButton
 
@@ -64,7 +64,7 @@ function selectAnswer(e) {
       selectedButton = e.target.parentNode
   } else {
       selectedButton = e.target
-  }	  
+  }
   const value = selectedButton.dataset.value
   answer = value
   setStatusClass(selectedButton)
@@ -143,12 +143,101 @@ const questions = [
     question: 'プログラミング言語といえば?',
     answers: [
       { value: "java" , image: "<img src ='q5/java.png' alt='Java' decoding='async'>"},
-	  { value: "c" , image: "<img src ='q5/c.png' alt='C' decoding='async'>"},
-	  { value: "c++" , image: "<img src ='q5/cplus.png' alt='C++' decoding='async'>"},
+	  { value: "c" , image: "<strong class=label>C言語</strong>"},
+	  { value: "c++" , image: "<strong class=label>C++</strong>"},
 	  { value: "python" , image: "<img src ='q5/python.png' alt='Python' decoding='async'>"},
 	  { value: "php" , image: "<img src ='q5/php.png' alt='php' decoding='async'>"},
 	  { value: "ruby" , image: "<img src ='q5/ruby.png' alt='Ruby' decoding='async'>"},
 	  { value: "js" , image: "<img src ='q5/js.png' alt='Java Script' decoding='async'>"}
+    ]
+  },
+  {
+    question: 'GW何してた?',
+    answers: [
+      { value: "自宅" , image: "<strong class=label>自宅</strong>"},
+    { value: "国内旅行" , image: "<strong class=label>国内旅行</strong>"},
+    { value: "海外旅行" , image: "<strong class=label>海外旅行</strong>"},
+    { value: "Others" , image: "<strong class=label>Others ..</strong>"}
+    ]
+  },
+  {
+    question: 'よく行くコーヒーチェーンは?',
+    answers: [
+      { value: "Starbucks" , image: "<strong class=label>Starbucks</strong>"},
+    { value: "DOUTOR COFFEE" , image: "<strong class=label>DOUTOR</strong>"},
+    { value: "TULLY's COFFEE" , image: "<strong class=label>TULLY's</strong>"},
+    { value: "コメダ珈琲店" , image: "<strong class=label>コメダ珈琲店</strong>"},
+    { value: "上島珈琲店" , image: "<strong class=label>上島珈琲店</strong>"},
+    { value: "ルノアール" , image: "<strong class=label>ルノアール</strong>"},
+    { value: "カフェベローチェ" , image: "<strong class=label>カフェベローチェ</strong>"},
+    { value: "サンマルクカフェ" , image: "<strong class=label>サンマルクカフェ</strong>"},
+    { value: "PRONTO" , image: "<strong class=label>PRONTO</strong>"},
+    { value: "エクセルシオール" , image: "<strong class=label>エクセルシオール</strong>"}
+    ]
+  },
+  {
+    question: '好きなお寿司のネタは?',
+    answers: [
+      { value: "はまち" , image: "<strong class=label>はまち</strong>"},
+    { value: "えんがわ" , image: "<strong class=label>えんがわ</strong>"},
+    { value: "赤エビ" , image: "<strong class=label>赤エビ</strong>"},
+    { value: "マグロ" , image: "<strong class=label>マグロ</strong>"},
+    { value: "ホタテ" , image: "<strong class=label>ホタテ</strong>"},
+    { value: "中とろ" , image: "<strong class=label>中とろ</strong>"},
+    { value: "鯖" , image: "<strong class=label>鯖</strong>"},
+    { value: "サーモン" , image: "<strong class=label>サーモン</strong>"},
+    { value: "玉子" , image: "<strong class=label>玉子</strong>"}
+    ]
+  },
+  {
+    question: '好きなお酒は?',
+    answers: [
+      { value: "ビール" , image: "<strong class=label>ビール</strong>"},
+    { value: "ワイン" , image: "<strong class=label>ワイン</strong>"},
+    { value: "焼酎" , image: "<strong class=label>焼酎</strong>"},
+    { value: "ウイスキー" , image: "<strong class=label>ウイスキー</strong>"},
+    { value: "カクテル" , image: "<strong class=label>カクテル</strong>"},
+    { value: "そのほか" , image: "<strong class=label>そのほか</strong>"},
+    { value: "飲みません" , image: "<strong class=label>飲みません</strong>"}
+    ]
+  },
+  {
+    question: 'ストレス解消法は?',
+    answers: [
+      { value: "寝る" , image: "<strong class=label>寝る</strong>"},
+    { value: "運動" , image: "<strong class=label>運動</strong>"},
+    { value: "飲酒" , image: "<strong class=label>飲酒</strong>"},
+    { value: "カラオケ" , image: "<strong class=label>カラオケ</strong>"},
+    { value: "買い物" , image: "<strong class=label>買い物</strong>"},
+    { value: "そのほか" , image: "<strong class=label>そのほか</strong>"}
+    ]
+  },
+  {
+    question: '好きな山手線の駅は?',
+    answers: [
+      { value: "新宿" , image: "<strong class=label>新宿</strong>"},
+    { value: "渋谷" , image: "<strong class=label>渋谷</strong>"},
+    { value: "池袋" , image: "<strong class=label>池袋</strong>"},
+    { value: "上野" , image: "<strong class=label>上野</strong>"},
+    { value: "新橋" , image: "<strong class=label>新橋</strong>"},
+    { value: "東京" , image: "<strong class=label>東京</strong>"},
+    { value: "品川" , image: "<strong class=label>品川</strong>"},
+    { value: "秋葉原" , image: "<strong class=label>秋葉原</strong>"},
+    { value: "そのほか" , image: "<strong class=label>そのほか</strong>"}
+    ]
+  },
+  {
+    question: '?',
+    answers: [
+      { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"},
+    { value: "" , image: "<strong class=label></strong>"}
     ]
   },
 ]

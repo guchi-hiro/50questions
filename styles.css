@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  width:800px;
+  width:900px;
   max-width: 90%;
   background-color: white;
   border-radius: 5px;
@@ -60,7 +60,7 @@ body {
 }
 
 .label{
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   padding: 10px 20px;
 }
