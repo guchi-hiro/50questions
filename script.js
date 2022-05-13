@@ -9,6 +9,7 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 let currentQuestionIndex
 let answer = ''
 let name = ''
+let selectedButton
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -25,7 +26,7 @@ function startGame() {
   inputName.classList.add('hide')
   startButton.classList.add('hide')
 
-  currentQuestionIndex = 1
+  currentQuestionIndex = 0
   name = inputName.value
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
@@ -60,11 +61,11 @@ function resetState() {
 }
 
 function selectAnswer(e) {
-
+  if (selectedButton != null) {
+      clearStatusClass(selectedButton)
+  }
   console.log(e.target.parentNode.tagName)
-
   const tagName = e.target.parentNode.tagName
-  let selectedButton
 
   if (tagName == 'BUTTON') {
       selectedButton = e.target.parentNode
