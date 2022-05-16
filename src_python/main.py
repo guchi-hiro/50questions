@@ -71,22 +71,23 @@ def compare_answers():
 def generate_ranking():
 
     ranking_list = []
-    answer_list = []
 
-    i = 2
+    for i in range(len(json_load[0]['answers'])):
 
-    for name_index, value in enumerate(json_load):
+        answer_list = []
 
-        try:
-            answer_list.append(value['answers'][i]['answer'])
-        except Exception as e:
-            print(e)
+        for name_index, value in enumerate(json_load):
+
+            try:
+                answer_list.append(value['answers'][i]['answer'])
+            except Exception as e:
+                print(e)
 
 
-    answers_dict = dict(collections.Counter(answer_list))
-    ranking_list.append(answers_dict)
+        answers_dict = dict(collections.Counter(answer_list))
+        ranking_list.append(answers_dict)
 
-    print(ranking_list)
+        print(ranking_list)
 
     for ranking_index, ranking in enumerate(ranking_list):
 
