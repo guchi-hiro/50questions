@@ -240,6 +240,135 @@ const questions = [
     ]
   },
   {
+    question: '旅行に行くなら?',
+    answers: [
+      { value: "北米" , image: false},
+    { value: "南米" , image: false},
+    { value: "アジア" , image: false},
+    { value: "ヨーロッパ" , image: false},
+    { value: "オセアニア" , image: false}
+    ]
+  },
+  {
+    question: 'プライベートで使用するブラウザは?',
+    answers: [
+      { value: "IE Edge" , image: false},
+    { value: "Google Chrome" , image: false},
+    { value: "Firefox" , image: false},
+    { value: "Opera" , image: false},
+    { value: "Safari" , image: false},
+    { value: "Brave" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '老後移住するならどこ?',
+    answers: [
+      { value: "北海道" , image: false},
+    { value: "東北" , image: false},
+    { value: "北陸" , image: false},
+    { value: "関東甲信" , image: false},
+    { value: "東海" , image: false},
+    { value: "中国" , image: false},
+    { value: "四国" , image: false},
+    { value: "九州" , image: false},
+    { value: "沖縄" , image: false}
+    ]
+  },
+  {
+    question: 'クラウドといえば?',
+    answers: [
+      { value: "AWS" , image: false},
+    { value: "Azure" , image: false},
+    { value: "GCP" , image: false},
+    { value: "IBM Cloud" , image: false},
+    { value: "Alibaba" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きな枕の種類は?',
+    answers: [
+      { value: "高反発" , image: false},
+    { value: "低反発" , image: false},
+    { value: "ラテックス" , image: false},
+    { value: "ファイバー" , image: false},
+    { value: "羽根" , image: false},
+    { value: "そばがら" , image: false},
+    { value: "ウール" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '外食するなら?',
+    answers: [
+      { value: "和食" , image: false},
+    { value: "イタリアン" , image: false},
+    { value: "中華" , image: false},
+    { value: "フレンチ" , image: false},
+    { value: "エスニック" , image: false},
+    { value: "アメリカ" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'どのくらい走れる?',
+    answers: [
+      { value: "1km未満" , image: false},
+    { value: "1km" , image: false},
+    { value: "2km" , image: false},
+    { value: "5km" , image: false},
+    { value: "10km" , image: false},
+    { value: "20km" , image: false},
+    { value: "50km" , image: false},
+    { value: "50km以上" , image: false}
+    ]
+  },
+  {
+    question: '好きな球団は?',
+    answers: [
+      { value: "読売" , image: false},
+    { value: "広島" , image: false},
+    { value: "中日" , image: false},
+    { value: "阪神" , image: false},
+    { value: "横浜" , image: false},
+    { value: "ヤクルト" , image: false},
+    { value: "オリックス" , image: false},
+    { value: "ソフトバンク" , image: false},
+    { value: "楽天" , image: false},
+    { value: "日本ハム" , image: false},
+    { value: "ロッテ" , image: false},
+    { value: "西部" , image: false}
+    ]
+  },
+  {
+    question: 'サザエさん一家で好きなキャラクターは?',
+    answers: [
+      { value: "サザエ" , image: false},
+    { value: "マスオ" , image: false},
+    { value: "波平" , image: false},
+    { value: "フネ" , image: false},
+    { value: "カツオ" , image: false},
+    { value: "ワカメ" , image: false},
+    { value: "タラちゃん" , image: false},
+    { value: "タマ" , image: false}
+    ]
+  },
+  {
+    question: '?',
+    answers: [
+      { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false}
+    ]
+  },
+  {
     question: '?',
     answers: [
       { value: "" , image: false},
