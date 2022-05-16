@@ -338,7 +338,7 @@ const questions = [
     { value: "楽天" , image: false},
     { value: "日本ハム" , image: false},
     { value: "ロッテ" , image: false},
-    { value: "西部" , image: false}
+    { value: "西武" , image: false}
     ]
   },
   {
@@ -494,6 +494,65 @@ const questions = [
     { value: "ケンタッキー" , image: false},
     { value: "ファーストキッチン" , image: false},
     { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'PCといえば?',
+    answers: [
+      { value: "Apple" , image: false},
+    { value: "IBM" , image: false},
+    { value: "NEC" , image: false},
+    { value: "Fujitsu" , image: false},
+    { value: "Lenovo" , image: false},
+    { value: "Sony" , image: false},
+    { value: "Panasonic" , image: false},
+    { value: "DELL" , image: false},
+    { value: "ASUS" , image: false},
+    { value: "hp" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'ファミリーレストランといえば?',
+    answers: [
+      { value: "ガスト" , image: false},
+    { value: "サイゼリヤ" , image: false},
+    { value: "デニーズ" , image: false},
+    { value: "ジョナサン" , image: false},
+    { value: "バーミヤン" , image: false},
+    { value: "ロイヤルホスト" , image: false},
+    { value: "とんでん" , image: false},
+    { value: "びっくりドンキー" , image: false},
+    { value: "ビッグボーイ" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'この中で一番苦手な食べ物は?',
+    answers: [
+      { value: "納豆" , image: false},
+    { value: "ホルモン" , image: false},
+    { value: "パクチー" , image: false},
+    { value: "唐辛子" , image: false},
+    { value: "くさや" , image: false},
+    { value: "しいたけ" , image: false},
+    { value: "グリーンピース" , image: false},
+    { value: "セロリ" , image: false},
+    { value: "全部好き" , image: false}
+    ]
+  },
+  {
+    question: '?',
+    answers: [
+      { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false},
+    { value: "" , image: false}
     ]
   },
   {
