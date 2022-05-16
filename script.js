@@ -355,17 +355,145 @@ const questions = [
     ]
   },
   {
-    question: '?',
+    question: 'ディズニーランドといえば?',
     answers: [
-      { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false}
+      { value: "スペースマウンテン" , image: false},
+    { value: "ビッグサンダーマウンテン" , image: false},
+    { value: "プーさんのハニーハント" , image: false},
+    { value: "イッツ・ア・スモールワールド" , image: false},
+    { value: "スプラッシュマウンテン" , image: false},
+    { value: "ジャングルクルーズ" , image: false},
+    { value: "ホーンテッドマンション" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'ディズニーシーといえば?',
+    answers: [
+      { value: "タワーオブテラー" , image: false},
+    { value: "センターオブジアース" , image: false},
+    { value: "海底二万マイル" , image: false},
+    { value: "インディ・ジョーンズ" , image: false},
+    { value: "タートル・トーク" , image: false},
+    { value: "トイ・ストーリー・マニア" , image: false},
+    { value: "シンドバッド" , image: false},
+    { value: "マジックランプシアター" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'ジブリ映画といえば?',
+    answers: [
+      { value: "となりのトトロ" , image: false},
+    { value: "ハウルの動く城" , image: false},
+    { value: "もののけ姫" , image: false},
+    { value: "崖の上のポニョ" , image: false},
+    { value: "魔女の宅急便" , image: false},
+    { value: "天空の城ラピュタ" , image: false},
+    { value: "風の谷のナウシカ" , image: false},
+    { value: "千と千尋の神隠し" , image: false},
+    { value: "借りぐらしのアリエッティ" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きなスイーツは?',
+    answers: [
+      { value: "ケーキ" , image: false},
+    { value: "大福" , image: false},
+    { value: "かき氷" , image: false},
+    { value: "ドーナツ" , image: false},
+    { value: "プリン" , image: false},
+    { value: "チョコレート" , image: false},
+    { value: "どら焼き" , image: false},
+    { value: "アイスクリーム" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きなおにぎりの具は?',
+    answers: [
+      { value: "ツナマヨ" , image: false},
+    { value: "梅干し" , image: false},
+    { value: "鮭" , image: false},
+    { value: "昆布" , image: false},
+    { value: "明太子" , image: false},
+    { value: "おかか" , image: false},
+    { value: "エビマヨ" , image: false},
+    { value: "すじこ" , image: false},
+    { value: "塩" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'アニメのキャラクターといえば?',
+    answers: [
+      { value: "ピカチュー" , image: false},
+    { value: "ドラえもん" , image: false},
+    { value: "サザエさん" , image: false},
+    { value: "孫悟空" , image: false},
+    { value: "コナン" , image: false},
+    { value: "ルパン" , image: false},
+    { value: "ルフィー" , image: false},
+    { value: "桜木花道" , image: false},
+    { value: "プリキュア" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '習得したい言語は?',
+    answers: [
+      { value: "フランス語" , image: false},
+    { value: "ドイツ語" , image: false},
+    { value: "中国語" , image: false},
+    { value: "韓国語" , image: false},
+    { value: "イタリア語" , image: false},
+    { value: "ロシア語" , image: false},
+    { value: "スペイン語" , image: false},
+    { value: "ポルトガル語" , image: false}
+    ]
+  },
+  {
+    question: 'どんぶりといえば?',
+    answers: [
+      { value: "親子丼" , image: false},
+    { value: "海鮮丼" , image: false},
+    { value: "牛丼" , image: false},
+    { value: "かつ丼" , image: false},
+    { value: "天丼" , image: false},
+    { value: "うな丼" , image: false},
+    { value: "鉄火丼" , image: false},
+    { value: "豚丼" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '武道or格闘技習うなら何を習う?',
+    answers: [
+      { value: "柔道" , image: false},
+    { value: "ボクシング" , image: false},
+    { value: "テコンドー" , image: false},
+    { value: "カンフー" , image: false},
+    { value: "ムエタイ" , image: false},
+    { value: "剣道" , image: false},
+    { value: "相撲" , image: false},
+    { value: "総合格闘技" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きなハンバーガーブランドは?',
+    answers: [
+      { value: "マクドナルド" , image: false},
+    { value: "モスバーガー" , image: false},
+    { value: "フレッシュネスバーガー" , image: false},
+    { value: "ウェンディーズ" , image: false},
+    { value: "バーガーキング" , image: false},
+    { value: "ロッテリア" , image: false},
+    { value: "クア・アイナ" , image: false},
+    { value: "ケンタッキー" , image: false},
+    { value: "ファーストキッチン" , image: false},
+    { value: "Others" , image: false}
     ]
   },
   {
