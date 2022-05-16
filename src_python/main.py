@@ -2,9 +2,11 @@ import json
 import collections
 import pandas
 import os, time
+import japanize_matplotlib
+import matplotlib.pyplot as plt
 from datetime import datetime
 
-json_open = open('data/sample.json', 'r')
+json_open = open('data/g.json', 'r', encoding='utf-8')
 json_load = json.load(json_open)
 
 all_answer_list = []
@@ -69,36 +71,37 @@ def compare_answers():
 def generate_ranking():
 
     ranking_list = []
-    summary_list = []
+    answer_list = []
+
+    i = 2
 
     for name_index, value in enumerate(json_load):
 
-        answer_list = []
-
         try:
-            print(value['name'])
-            print(value['answers'][name_index]['answer'])
-
-            for answer_index, answer in enumerate(value['answers']):
-
-                answer_list.append(value['answers'][answer_index]['answer'])
-                target_name = value['name']
-
-
-            answers_dict = dict(collections.Counter(answer_list))
-            ranking_list.append(sorted(answers_dict, key=answers_dict.get))
-            summary_list.append(answers_dict)
-
+            answer_list.append(value['answers'][i]['answer'])
         except Exception as e:
             print(e)
 
 
-    print(ranking_list)
-    print(summary_list)
+    answers_dict = dict(collections.Counter(answer_list))
+    ranking_list.append(answers_dict)
 
+    print(ranking_list)
+
+    for ranking_index, ranking in enumerate(ranking_list):
+
+        fig1, ax1 = plt.subplots()
+        ax1.pie(ranking.values(),
+                labels=ranking.keys(),
+                autopct='%1.1f%%',
+                shadow=True, startangle=90)
+        ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+        plt.show()
 
 
 if __name__ == "__main__":
-    generate_ranking()
+
     generate_answer_list()
     compare_answers()
+    generate_ranking()
