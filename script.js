@@ -2,6 +2,7 @@ const labelName = document.getElementById('label-name')
 const inputName = document.getElementById('name')
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
+const uploadButton = document.getElementById('upload-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
@@ -10,12 +11,34 @@ let currentQuestionIndex
 let answer = ''
 let name = ''
 let selectedButton
+let output_json = ''
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
+uploadButton.addEventListener('click', uploadFile)
+
+function uploadFile() {
+
+  const data = JSON.stringify(output_json)
+  const xhr = new XMLHttpRequest()
+
+  xhr.addEventListener('readystatechange', function() {
+  if (this.readyState === this.DONE) {
+  console.log(this.responseText)
+  alert("Uplaod is done, Thank you.")
+} else {
+  alert("Sorry. Please try it later.")
+}
+  })
+
+  xhr.open('POST', '')
+  xhr.setRequestHeader('content-type', 'application/json')
+
+  xhr.send(data)
+}
 
 function startGame() {
   if (inputName.value == '') {
@@ -26,8 +49,11 @@ function startGame() {
   inputName.classList.add('hide')
   startButton.classList.add('hide')
 
+
   currentQuestionIndex = 0
   name = inputName.value
+  output_json = {'name': name, 'answers':[]}
+
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
   }
@@ -35,7 +61,10 @@ function startGame() {
 
 function setNextQuestion(e) {
   resetState()
-  console.log("Name: " + name + "Q: " + currentQuestionIndex + " A: " + answer)
+  if (currentQuestionIndex != 0) {
+      output_json.answers[currentQuestionIndex-1] = {'id': currentQuestionIndex, 'answer': answer}
+      console.log(JSON.stringify(output_json))
+  }
   showQuestion(questions[currentQuestionIndex])
 }
 
@@ -85,8 +114,7 @@ function selectAnswer(e) {
   if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startButton.innerText = 'DONE!!'
-    startButton.classList.remove('hide')
+    uploadButton.classList.remove('hide')
   }
 }
 
