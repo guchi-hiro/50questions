@@ -6,12 +6,16 @@ const uploadButton = document.getElementById('upload-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const langs = document.getElementsByName('langs')
+const langsRadio = document.getElementById('langsRadio')
+
 
 let currentQuestionIndex
 let answer = ''
 let name = ''
 let selectedButton
 let output_json = ''
+let lang = 'jp'
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -45,6 +49,17 @@ function startGame() {
     alert('Please input your name')
 
   } else {
+
+  for (let i = 0; i < langs.length; i++){
+      if (langs.item(i).checked){
+          lang = langs.item(i).value;
+      }
+      //langsRadio.item(i).classList.add('hide')
+  }
+
+  console.log(lang);
+
+  langsRadio.classList.add('hide')
   labelName.classList.add('hide')
   inputName.classList.add('hide')
   startButton.classList.add('hide')
@@ -69,20 +84,21 @@ function setNextQuestion(e) {
 }
 
 function showQuestion(question) {
-  questionElement.innerText = "Q: " + currentQuestionIndex + "  " + question.question
+  index = currentQuestionIndex+1
+
+  question_title = (lang == 'jp') ? question.question : question.questionEG;
+  questionElement.innerText = "Q: " + currentQuestionIndex + "  " + question_title
   questionElement.style.fontSize = "26px"
+
   question.answers.forEach(answer => {
     const button = document.createElement('button')
     button.classList.add('btn')
     button.dataset.value = answer.value
 
-    imageIndex = currentQuestionIndex + 1
-    if (answer.image) {
-      button.innerHTML = "<img src ='q" + imageIndex + "/" + answer.value + ".png ' decoding='async'>"
-    } else {
-      button.innerHTML = '<strong class=label>' + answer.value + '</strong>'
-    }
-	button.addEventListener('click', selectAnswer)
+    answer_title = (lang == 'jp') ? answer.value : answer.valueEG
+
+    button.innerHTML = (answer.image) ? "<img src ='q" + index + "/" + answer.value + ".png ' decoding='async'>" : '<strong class=label>' + answer_title + '</strong>'
+	  button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
   })
 }
@@ -130,26 +146,26 @@ const questions = [
   {
     question: '東京メトロといえば?',
     answers: [
-      { value: "ginza" , image: true },
-	  { value: "maru" , image: true},
-	  { value: "hibiya" , image: true},
-	  { value: "tohzai" , image: true},
-	  { value: "yuraku" , image: true},
-	  { value: "fuku" , image: true},
-	  { value: "hanzo" , image: true},
-	  { value: "chiyoda" , image: true},
-	  { value: "namboku" , image: true}
+      { value: "Ginza-line" , image: true },
+	  { value: "Marunouchi-line" , image: true},
+	  { value: "Hibiya-line" , image: true},
+	  { value: "Tohzai-line" , image: true},
+	  { value: "Yurakucho-line" , image: true},
+	  { value: "Fukutoshin-line" , image: true},
+	  { value: "Hanzomon-line" , image: true},
+	  { value: "Chiyoda-line" , image: true},
+	  { value: "Namboku-line" , image: true}
     ]
   },
   {
     question: 'SNSといえば?',
     answers: [
-      { value: "facebook" , image: true},
-	  { value: "twitter" , image: true},
-	  { value: "insta" , image: true},
-	  { value: "line" , image: true},
-	  { value: "tiktok" , image: true},
-	  { value: "youtube" , image: true}
+      { value: "Facebook" , image: true},
+	  { value: "Twitter" , image: true},
+	  { value: "Instagram" , image: true},
+	  { value: "LINE" , image: true},
+	  { value: "TikTok" , image: true},
+	  { value: "Youtube" , image: true}
     ]
   },
   {
