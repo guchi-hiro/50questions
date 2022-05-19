@@ -87,7 +87,7 @@ function showQuestion(question) {
   index = currentQuestionIndex+1
 
   question_title = (lang == 'jp') ? question.question : question.questionEG;
-  questionElement.innerText = "Q: " + currentQuestionIndex + "  " + question_title
+  questionElement.innerText = "Q: " + index + "  " + question_title
   questionElement.style.fontSize = "26px"
 
   question.answers.forEach(answer => {
@@ -179,7 +179,7 @@ const questions = [
 	  { value: "home" , image: false},
 	  { value: "capslock" , image: false},
 	  { value: "end" , image: false},
-	  { value: "Other" , image: false}
+	  { value: "Others" , image: false}
     ]
   },
   {
@@ -202,18 +202,27 @@ const questions = [
       { value: "java" , image: true},
 	  { value: "c" , image: false},
 	  { value: "c++" , image: false},
+	  { value: "c#" , image: false},
+	  { value: "COBOL" , image: false},
 	  { value: "python" , image: true},
 	  { value: "php" , image: true},
 	  { value: "ruby" , image: true},
-	  { value: "js" , image: true}
+	  { value: "js" , image: true},
+    { value: "Others" , image: false}
     ]
   },
   {
-    question: 'GW何してた?',
+    question: '休日何してる?',
     answers: [
-      { value: "自宅" , image: false},
-    { value: "国内旅行" , image: false},
-    { value: "海外旅行" , image: false},
+      { value: "寝る" , image: false},
+    { value: "読書" , image: false},
+    { value: "運動" , image: false},
+    { value: "習い事" , image: false},
+    { value: "ネット" , image: false},
+  　{ value: "家事" , image: false},
+　  { value: "人と会う" , image: false},
+　  { value: "勉強" , image: false},
+　  { value: "仕事" , image: false},
     { value: "Others" , image: false}
     ]
   },
@@ -254,7 +263,7 @@ const questions = [
     { value: "焼酎" , image: false},
     { value: "ウイスキー" , image: false},
     { value: "カクテル" , image: false},
-    { value: "そのほか" , image: false},
+    { value: "Others" , image: false},
     { value: "飲みません" , image: false}
     ]
   },
@@ -263,10 +272,11 @@ const questions = [
     answers: [
       { value: "寝る" , image: false},
     { value: "運動" , image: false},
+    { value: "瞑想" , image: false},
     { value: "飲酒" , image: false},
     { value: "カラオケ" , image: false},
     { value: "買い物" , image: false},
-    { value: "そのほか" , image: false}
+    { value: "Others" , image: false}
     ]
   },
   {
@@ -280,7 +290,10 @@ const questions = [
     { value: "東京" , image: false},
     { value: "品川" , image: false},
     { value: "秋葉原" , image: false},
-    { value: "そのほか" , image: false}
+    { value: "有楽町" , image: false},
+    { value: "日暮里" , image: false},
+    { value: "神田" , image: false},
+    { value: "Others" , image: false}
     ]
   },
   {
@@ -290,7 +303,8 @@ const questions = [
     { value: "南米" , image: false},
     { value: "アジア" , image: false},
     { value: "ヨーロッパ" , image: false},
-    { value: "オセアニア" , image: false}
+    { value: "オセアニア" , image: false},
+    { value: "北極・南極" , image: false}
     ]
   },
   {
@@ -541,7 +555,7 @@ const questions = [
     ]
   },
   {
-    question: 'PCといえば?',
+    question: '初めて買ったPCは?',
     answers: [
       { value: "Apple" , image: false},
     { value: "IBM" , image: false},
@@ -586,21 +600,234 @@ const questions = [
     ]
   },
   {
-    question: '?',
+    question: '好きなスポーツは?',
     answers: [
-      { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false}
+      { value: "サッカー" , image: false},
+    { value: "野球" , image: false},
+    { value: "バスケットボール" , image: false},
+    { value: "ラグビー" , image: false},
+    { value: "バレーボール" , image: false},
+    { value: "ゴルフ" , image: false},
+    { value: "スキー・スノーボード" , image: false},
+    { value: "テニス" , image: false},
+    { value: "卓球" , image: false},
+    { value: "陸上" , image: false},
+    { value: "Others" , image: false}
     ]
   },
   {
-    question: '?',
+    question: '人生やり直すなら?',
+    answers: [
+      { value: "小学校前" , image: false},
+    { value: "小学校" , image: false},
+    { value: "中学校" , image: false},
+    { value: "高校" , image: false},
+    { value: "大学" , image: false},
+    { value: "社会人1年目" , image: false},
+    { value: "社会人1年目以降" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'どのような本を読む?',
+    answers: [
+      { value: "純文学" , image: false},
+    { value: "大衆文学" , image: false},
+    { value: "ビジネス書" , image: false},
+    { value: "専門書" , image: false},
+    { value: "学習参考書" , image: false},
+    { value: "雑誌" , image: false},
+    { value: "漫画" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'タイムワープするなら?',
+    answers: [
+      { value: "原始（縄文・弥生）" , image: false},
+    { value: "古代（飛鳥・奈良）" , image: false},
+    { value: "中世（鎌倉・戦国）" , image: false},
+    { value: "近世（江戸）" , image: false},
+    { value: "近代（明治・大正）" , image: false},
+    { value: "現代（昭和・平成）" , image: false}
+    ]
+  },
+  {
+    question: '好きなおでんの具は?',
+    answers: [
+      { value: "玉子" , image: false},
+    { value: "大根" , image: false},
+    { value: "ちくわぶ" , image: false},
+    { value: "牛すじ" , image: false},
+    { value: "はんぺん" , image: false},
+    { value: "昆布" , image: false},
+    { value: "ごぼう天" , image: false},
+    { value: "しらたき" , image: false},
+    { value: "豆腐" , image: false},
+    { value: "こんにゃく" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きな音楽のジャンルは?',
+    answers: [
+      { value: "JPOP" , image: false},
+    { value: "KPOP" , image: false},
+    { value: "洋楽" , image: false},
+    { value: "クラシック" , image: false},
+    { value: "ジャズ" , image: false},
+    { value: "ヘビーメタル" , image: false},
+    { value: "ロック" , image: false},
+    { value: "演歌" , image: false},
+    { value: "HipPop" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'コンビニといえば?',
+    answers: [
+      { value: "セブンイレブン" , image: false},
+    { value: "ローソン" , image: false},
+    { value: "ファミリーマート" , image: false},
+    { value: "ミニストップ" , image: false},
+    { value: "セイコーマート" , image: false},
+    { value: "スリーエフ" , image: false},
+    { value: "ポプラ" , image: false},
+    { value: "ローソンストア100" , image: false},
+    { value: "ナチュラルローソン" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: 'ペット飼うなら?',
+    answers: [
+      { value: "犬" , image: false},
+    { value: "猫" , image: false},
+    { value: "鳥" , image: false},
+    { value: "魚" , image: false},
+    { value: "ハムスター" , image: false},
+    { value: "カメ" , image: false},
+    { value: "ハリネズミ" , image: false},
+    { value: "ヘビ" , image: false},
+    { value: "ウサギ" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きなExcel関数は?',
+    answers: [
+      { value: "SUM" , image: false},
+    { value: "VLOOKUP" , image: false},
+    { value: "COUNT" , image: false},
+    { value: "ROUND" , image: false},
+    { value: "IF,IFS" , image: false},
+    { value: "MAX,MIN" , image: false},
+    { value: "IFERROR" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きな映画のジャンルは?',
+    answers: [
+      { value: "ミステリー" , image: false},
+    { value: "恋愛" , image: false},
+    { value: "ドキュメンタリー" , image: false},
+    { value: "SF" , image: false},
+    { value: "アクション" , image: false},
+    { value: "アニメ" , image: false},
+    { value: "コメディ" , image: false},
+    { value: "ホラー" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '好きな月は?',
+    answers: [
+      { value: "1月" , image: false},
+    { value: "2月" , image: false},
+    { value: "3月" , image: false},
+    { value: "4月" , image: false},
+    { value: "5月" , image: false},
+    { value: "6月" , image: false},
+    { value: "7月" , image: false},
+    { value: "8月" , image: false},
+    { value: "9月" , image: false},
+    { value: "10月" , image: false},
+    { value: "11月" , image: false},
+    { value: "12月" , image: false}
+    ]
+  },
+  {
+    question: '目玉焼きには何をかける?',
+    answers: [
+      { value: "何もかけない" , image: false},
+    { value: "醤油" , image: false},
+    { value: "ウスターソース" , image: false},
+    { value: "ケチャップ" , image: false},
+    { value: "マヨネーズ" , image: false},
+    { value: "塩コショウ" , image: false},
+    { value: "とんかつソース" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '根岸PNとご飯に行くなら?',
+    answers: [
+      { value: "お寿司" , image: false},
+    { value: "バー" , image: false},
+    { value: "居酒屋" , image: false},
+    { value: "イタリアン" , image: false},
+    { value: "フレンチ" , image: false},
+    { value: "懐石" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '私用のPC・スマホ・タブレットあわせて何台持ってる?',
+    answers: [
+      { value: "1台" , image: false},
+    { value: "2台" , image: false},
+    { value: "3台" , image: false},
+    { value: "4台" , image: false},
+    { value: "5台" , image: false},
+    { value: "6台" , image: false},
+    { value: "7台" , image: false},
+    { value: "8台" , image: false},
+    { value: "9台" , image: false},
+    { value: "10台" , image: false},
+    { value: "10台以上" , image: false}
+    ]
+  },
+  {
+    question: '藤PNが飼っているペットは?',
+    answers: [
+      { value: "犬" , image: false},
+    { value: "猫" , image: false},
+    { value: "鳥" , image: false},
+    { value: "魚" , image: false},
+    { value: "ハムスター" , image: false},
+    { value: "カメ" , image: false},
+    { value: "ハリネズミ" , image: false},
+    { value: "ヘビ" , image: false},
+    { value: "ウサギ" , image: false}
+    ]
+  },
+  {
+    question: '好きな業界は?',
+    answers: [
+      { value: "メーカー" , image: false},
+    { value: "小売" , image: false},
+    { value: "サービス" , image: false},
+    { value: "ソフトウェア・通信" , image: false},
+    { value: "商社" , image: false},
+    { value: "金融" , image: false},
+    { value: "マスコミ" , image: false},
+    { value: "官公庁" , image: false},
+    { value: "Others" , image: false}
+    ]
+  },
+  {
+    question: '',
     answers: [
       { value: "" , image: false},
     { value: "" , image: false},
@@ -609,8 +836,7 @@ const questions = [
     { value: "" , image: false},
     { value: "" , image: false},
     { value: "" , image: false},
-    { value: "" , image: false},
     { value: "" , image: false}
     ]
-  },
+  }
 ]
