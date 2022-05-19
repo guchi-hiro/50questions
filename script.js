@@ -26,7 +26,8 @@ uploadButton.addEventListener('click', uploadFile)
 
 function uploadFile() {
 
-  const data = JSON.stringify(output_json)
+  console.log(JSON.stringify(output_json))
+  const data = btoa(unescape(encodeURIComponent((JSON.stringify(output_json)))))
   const xhr = new XMLHttpRequest()
 
   xhr.addEventListener('readystatechange', function() {
@@ -38,8 +39,8 @@ function uploadFile() {
 }
   })
 
-  xhr.open('POST', '')
-  xhr.setRequestHeader('content-type', 'application/json')
+  xhr.open('POST', 'http:///app/post_data')
+  xhr.setRequestHeader('content-type', 'text/plain')
 
   xhr.send(data)
 }
