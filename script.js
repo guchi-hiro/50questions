@@ -30,20 +30,39 @@ function uploadFile() {
   const data = btoa(unescape(encodeURIComponent((JSON.stringify(output_json)))))
   const xhr = new XMLHttpRequest()
 
-  xhr.addEventListener('readystatechange', function() {
-  if (this.readyState === this.DONE) {
-  console.log(this.responseText)
-  alert("Uplaod is done, Thank you.")
-} else {
-  alert("Sorry. Please try it later.")
-}
-  })
+  xhr.onreadystatechange = function() {
+      switch ( xhr.readyState ) {
+          case 0:
+              // 未初期化状態.
+              console.log( 'uninitialized!' );
+              break;
+          case 1: // データ送信中.
+              console.log( 'loading...' );
+              break;
+          case 2: // 応答待ち.
+              console.log( 'loaded.' );
+              break;
+          case 3: // データ受信中.
+              console.log( 'interactive... '+xhr.responseText.length+' bytes.' );
+              break;
+          case 4: // データ受信完了.
+              if( xhr.status == 200 || xhr.status == 304 ) {
+                  var data = xhr.responseText; // responseXML もあり
+                  console.log( 'COMPLETE! :'+data );
+              } else {
+                  console.log( 'Failed. HttpStatus: '+xhr.statusText );
+              }
+              break;
+      }
+  };
 
   xhr.open('POST', 'http:///app/post_data')
   xhr.setRequestHeader('content-type', 'text/plain')
 
   xhr.send(data)
 }
+
+
 
 function startGame() {
   if (inputName.value == '') {
@@ -828,16 +847,15 @@ const questions = [
     ]
   },
   {
-    question: '',
+    question: '学生時代やっていた部活は？',
     answers: [
-      { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false},
-    { value: "" , image: false}
+      { value: "武道系（剣道など）" , image: false},
+    { value: "球技系（野球など）" , image: false},
+    { value: "非球技系（陸上など）" , image: false},
+    { value: "音楽系（吹奏楽など）" , image: false},
+    { value: "文科系" , image: false},
+    { value: "芸術系" , image: false},
+    { value: "帰宅部" , image: false}
     ]
   }
 ]
