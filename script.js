@@ -150,6 +150,8 @@ function selectAnswer(e) {
   if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
+    output_json.answers[currentQuestionIndex-1] = {'id': currentQuestionIndex, 'answer': answer}
+    console.log(JSON.stringify(output_json))
     uploadButton.classList.remove('hide')
   }
 }
