@@ -42,7 +42,8 @@ function loadFile(filePath) {
   return result;
 }
 
-const list = loadFile("src_python/ranking_list.txt");
+list = loadFile("src_python/ranking_list.txt");
+backgroundColors = ['red', 'pink', 'yellow', 'green', 'blue', 'purple', 'gray', 'black', 'white' ,'khaki' ,'lawngreen' , 'lightblue' , 'lightpink'];
 
 console.log(list[index][1])
 
@@ -51,7 +52,7 @@ var data = {
       datasets: [
         {
             fill: true,
-            backgroundColor: ['red', 'pink', 'yellow', 'green', 'blue', 'purple', 'gray', 'black', 'white' ,'khaki' ,'lawngreen' , 'lightblue' , 'lightpink'],
+            backgroundColor: backgroundColors,
             data: list[index][1]
         }
     ]
@@ -60,8 +61,7 @@ var data = {
 var options = {
         title: {
                   display: true,
-                  text: 'What happens when you lend your favorite t-shirt to a girl ?',
-                  position: 'top'
+                  text: 'What happens when you lend your favorite t-shirt to a girl ?'
               },
         rotation: -0.7 * Math.PI
 };
@@ -73,27 +73,38 @@ var myBarChart = new Chart(ctx, {
 });
 
 nextButton.addEventListener('click', () => {
-  index = index + 1
-  options.title.text = "Question2";
-  data.labels = list[index][0];
-  data.datasets.data = list[index][1];
-  var myBarChart = new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
-  });
-})
 
-backButton.addEventListener('click', () => {
-  index = index - 1
-  options.title.text = "Question2";
-  data.labels = list[index][0];
-  data.datasets.data = list[index][1];
-  var myBarChart = new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
-  });
+index = index + 1
+
+myBarChart.data.labels = [];
+myBarChart.data.datasets[0].data = '';
+myBarChart.update();
+
+var data = {
+    labels: list[index][0],
+    datasets: [
+        {
+            fill: true,
+            backgroundColor: backgroundColors,
+            data: list[index][1]
+        }
+    ]
+};
+
+var options = {
+        title: {
+                  display: true,
+                  text: 'Question2'
+              },
+        rotation: -0.7 * Math.PI
+};
+
+myBarChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+});
+
 })
 
 </script>
