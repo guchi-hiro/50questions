@@ -30,7 +30,19 @@ const nextButton = document.getElementById('next-btn')
 Chart.defaults.global.defaultFontColor = 'black';
 Chart.defaults.global.defaultFontSize = 16;
 let index=0
-const list = [[['yellow', 'red', 'green', 'black', 'blue', 'pink', 'white', 'purple', 'brown'], [11, 5, 10, 9, 8, 8, 10, 3, 6]], [['ai', 'o', 'ue'], [24, 18, 28]], [['渋谷', '新宿', '池袋', '新橋', '東京'], [17, 19, 12, 6, 16]], [['black', 'blue', 'green', 'purple', 'red', 'brown', 'white', 'pink', 'yellow'], [11, 4, 11, 9, 7, 5, 10, 7, 6]], [['ai', 'ue', 'o'], [20, 26, 24]], [['渋谷', '新橋', '池袋', '東京', '新宿'], [18, 12, 17, 14, 9]], [['purple', 'blue', 'black', 'yellow', 'white', 'pink', 'red', 'green', 'brown'], [9, 13, 8, 9, 8, 7, 8, 4, 4]], [['ai', 'ue', 'o'], [33, 19, 18]], [['渋谷', '東京', '池袋', '新橋', '新宿'], [14, 17, 10, 13, 16]], [['yellow', 'brown', 'blue', 'red', 'green', 'black', 'white', 'pink', 'purple'], [8, 5, 11, 11, 7, 6, 8, 8, 6]], [['o', 'ai', 'ue'], [21, 24, 25]], [['東京', '新宿', '新橋', '渋谷', '池袋'], [14, 13, 14, 10, 19]]]
+
+function loadFile(filePath) {
+  var result = null;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", filePath, false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+  }
+  return result;
+}
+
+const list = loadFile("src_python/ranking_list.txt");
 
 console.log(list[index][1])
 
