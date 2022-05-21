@@ -48,9 +48,9 @@ function uploadFile() {
           case 4: // データ受信完了.
               if( xhr.status == 200 || xhr.status == 304 ) {
                   var data = xhr.responseText; // responseXML もあり
-                  console.log( 'COMPLETE! :'+data );
+                  alert( 'COMPLETE! :'+data );
               } else {
-                  console.log( 'Failed. HttpStatus: '+xhr.statusText );
+                  alert( 'Failed. Please try it later. HttpStatus: '+xhr.statusText );
               }
               break;
       }
