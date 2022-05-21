@@ -1,0 +1,89 @@
+<html>
+ <head>
+   <meta charset="utf-8" />
+   <title>Ranking Result</title>
+   <link href="styles.css" rel="stylesheet">
+ </head>
+
+ <body>
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+<!--       Chart.js Canvas Tag -->
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <button id="back-btn" class="btn">Previous</button>
+  <button id="next-btn" class="btn">Next</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script>
+
+var canvas = document.getElementById("barChart");
+var ctx = canvas.getContext('2d');
+const backButton = document.getElementById('back-btn')
+const nextButton = document.getElementById('next-btn')
+Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontSize = 16;
+let index=0
+const list = [[['yellow', 'red', 'green', 'black', 'blue', 'pink', 'white', 'purple', 'brown'], [11, 5, 10, 9, 8, 8, 10, 3, 6]], [['ai', 'o', 'ue'], [24, 18, 28]], [['渋谷', '新宿', '池袋', '新橋', '東京'], [17, 19, 12, 6, 16]], [['black', 'blue', 'green', 'purple', 'red', 'brown', 'white', 'pink', 'yellow'], [11, 4, 11, 9, 7, 5, 10, 7, 6]], [['ai', 'ue', 'o'], [20, 26, 24]], [['渋谷', '新橋', '池袋', '東京', '新宿'], [18, 12, 17, 14, 9]], [['purple', 'blue', 'black', 'yellow', 'white', 'pink', 'red', 'green', 'brown'], [9, 13, 8, 9, 8, 7, 8, 4, 4]], [['ai', 'ue', 'o'], [33, 19, 18]], [['渋谷', '東京', '池袋', '新橋', '新宿'], [14, 17, 10, 13, 16]], [['yellow', 'brown', 'blue', 'red', 'green', 'black', 'white', 'pink', 'purple'], [8, 5, 11, 11, 7, 6, 8, 8, 6]], [['o', 'ai', 'ue'], [21, 24, 25]], [['東京', '新宿', '新橋', '渋谷', '池袋'], [14, 13, 14, 10, 19]]]
+
+console.log(list[index][1])
+
+var data = {
+    labels: list[index][0],
+      datasets: [
+        {
+            fill: true,
+            backgroundColor: ['red', 'pink', 'yellow', 'green', 'blue', 'purple', 'gray', 'black', 'white' ,'khaki' ,'lawngreen' , 'lightblue' , 'lightpink'],
+            data: list[index][1]
+        }
+    ]
+};
+
+var options = {
+        title: {
+                  display: true,
+                  text: 'What happens when you lend your favorite t-shirt to a girl ?',
+                  position: 'top'
+              },
+        rotation: -0.7 * Math.PI
+};
+
+var myBarChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+});
+
+nextButton.addEventListener('click', () => {
+  index = index + 1
+  options.title.text = "Question2";
+  data.labels = list[index][0];
+  data.datasets.data = list[index][1];
+  var myBarChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+  });
+})
+
+backButton.addEventListener('click', () => {
+  index = index - 1
+  options.title.text = "Question2";
+  data.labels = list[index][0];
+  data.datasets.data = list[index][1];
+  var myBarChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+  });
+})
+
+</script>
+</body>
+</html>

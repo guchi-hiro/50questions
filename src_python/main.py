@@ -83,23 +83,12 @@ def generate_ranking():
             except Exception as e:
                 print(e)
 
+        label_list = dict(collections.Counter(answer_list)).keys()
+        count_list = dict(collections.Counter(answer_list)).values()
+        ranking_list.append([list(label_list), list(count_list)])
 
-        answers_dict = dict(collections.Counter(answer_list))
-        ranking_list.append(answers_dict)
-
-        print(ranking_list)
-
-    for ranking_index, ranking in enumerate(ranking_list):
-
-        fig1, ax1 = plt.subplots()
-        ax1.pie(ranking.values(),
-                labels=ranking.keys(),
-                autopct='%1.1f%%',
-                shadow=True, startangle=90)
-        ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
-        plt.show()
-
+        f = open('ranking_list.txt', 'w', encoding='UTF-8')
+        f.write(str(ranking_list))
 
 if __name__ == "__main__":
 
