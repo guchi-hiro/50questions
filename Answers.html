@@ -21,6 +21,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 <script>
 
 var canvas = document.getElementById("barChart");
@@ -43,7 +44,7 @@ function loadFile(filePath) {
 }
 
 list = loadFile("src_python/ranking_list.txt");
-backgroundColors = ['red', 'pink', 'yellow', 'green', 'blue', 'purple', 'gray', 'black', 'white' ,'khaki' ,'lawngreen' , 'lightblue' , 'lightpink'];
+backgroundColors = ['darkgreen', 'green', 'forestgreen', 'seagreen', 'mediumseagreen', 'springgreen', 'mediumspringgreen', 'lightgreen', 'palegreen', 'lawngreen', 'greenyellow', 'yellowgreen'];
 
 console.log(list[index][1])
 
@@ -63,7 +64,15 @@ var options = {
                   display: true,
                   text: 'What happens when you lend your favorite t-shirt to a girl ?'
               },
-        rotation: -0.7 * Math.PI
+        rotation: -0.7 * Math.PI,
+        plugins: {
+            datalabels: {
+                formatter: function(value, context) {
+                    return context.chart.data.labels[context.dataIndex];
+                },
+                color: '#FFFFFF'
+            }
+        }
 };
 
 var myBarChart = new Chart(ctx, {
@@ -96,7 +105,15 @@ var options = {
                   display: true,
                   text: 'Question2'
               },
-        rotation: -0.7 * Math.PI
+        rotation: -0.7 * Math.PI,
+        plugins: {
+            datalabels: {
+                formatter: function(value, context) {
+                    return context.chart.data.labels[context.dataIndex];
+                },
+                color: '#FFFFFF'
+            }
+        }
 };
 
 myBarChart = new Chart(ctx, {
