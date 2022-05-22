@@ -5,11 +5,28 @@ import os, time
 import japanize_matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime
+import six
+import random
 
-json_open = open('data/g.json', 'r', encoding='utf-8')
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+
+cred = credentials.Certificate("./credential.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
+for doc in db.collections().__next__().get():
+    print(doc.to_dict())
+
+
+json_open = open('result.json', 'r', encoding='utf-8')
 json_load = json.load(json_open)
 
 all_answer_list = []
+ranking_list = []
+target_person_list = []
 
 def generate_answer_list():
 
@@ -70,8 +87,6 @@ def compare_answers():
 
 def generate_ranking():
 
-    ranking_list = []
-
     for i in range(len(json_load[0]['answers'])):
 
         answer_list = []
@@ -87,8 +102,29 @@ def generate_ranking():
         count_list = dict(collections.Counter(answer_list)).values()
         ranking_list.append([list(label_list), list(count_list)])
 
-        f = open('ranking_list.txt', 'w', encoding='UTF-8')
-        f.write(str(ranking_list))
+    dict_all_answer_of_each_questions = {}
+
+    for i in range(len(json_load[0]['answers'])):
+        questionNo = i
+
+        for index, answer in enumerate(all_answer_list):
+            dict_all_answer_of_each_questions[all_answer_list[index]['name']] = all_answer_list[index][questionNo]
+
+        target_person_list_of_each_question = []
+
+        for a_index, each_answer in enumerate(ranking_list[questionNo][0]):
+            person = {k:v for k,v in six.iteritems(dict_all_answer_of_each_questions) if v == each_answer}
+
+            target_persons = list(person.keys())
+            random.shuffle(target_persons)
+            target_person_list_of_each_question.append(target_persons[0])
+
+            print(target_person_list_of_each_question)
+
+        ranking_list[questionNo].append(target_person_list_of_each_question)
+
+    f = open('ranking_list.txt', 'w', encoding='UTF-8')
+    f.write(str(ranking_list))
 
 if __name__ == "__main__":
 
