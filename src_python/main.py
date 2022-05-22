@@ -46,8 +46,10 @@ def generate_answer_list():
         answer_dict = {}
 
         if not ('name' in value.keys() and 'answers' in value.keys()):
+            json_load.pop(name_index)
             break
         if len(value['answers']) != number_of_questions:
+            json_load.pop(name_index)
             break
 
         try:
