@@ -12,21 +12,32 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+number_of_questions = 49
+json_load_from_firestore = []
+all_answer_list = []
+ranking_list = []
+target_person_list = []
+
+json_open = open('result.json', 'r', encoding='utf-8')
+json_load = json.load(json_open)
 
 cred = credentials.Certificate("./credential.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 for doc in db.collections().__next__().get():
-    print(doc.to_dict())
 
+    value = doc.to_dict()
 
-json_open = open('result.json', 'r', encoding='utf-8')
-json_load = json.load(json_open)
+    if not ('name' in value.keys() and 'answers' in value.keys()):
+        break
 
-all_answer_list = []
-ranking_list = []
-target_person_list = []
+#    if len(value['answers']) != number_of_questions:
+#        break
+
+    json_load_from_firestore.append(doc.to_dict())
+
+print(json_load_from_firestore)
 
 def generate_answer_list():
 
@@ -34,8 +45,12 @@ def generate_answer_list():
 
         answer_dict = {}
 
-        try:
+        if not ('name' in value.keys() and 'answers' in value.keys()):
+            break
+        if len(value['answers']) != number_of_questions:
+            break
 
+        try:
             answer_dict.update({'name':value['name']})
 
             for answer_index, answer in enumerate(value['answers']):
@@ -87,7 +102,7 @@ def compare_answers():
 
 def generate_ranking():
 
-    for i in range(len(json_load[0]['answers'])):
+    for i in range(number_of_questions):
 
         answer_list = []
 
@@ -104,7 +119,7 @@ def generate_ranking():
 
     dict_all_answer_of_each_questions = {}
 
-    for i in range(len(json_load[0]['answers'])):
+    for i in range(number_of_questions):
         questionNo = i
 
         for index, answer in enumerate(all_answer_list):
