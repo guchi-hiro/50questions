@@ -1,0 +1,88 @@
+<html>
+ <head>
+   <meta charset="utf-8" />
+   <title>Ranking Result</title>
+   <link href="styles.css" rel="stylesheet">
+ </head>
+
+ <body>
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+<!--       Chart.js Canvas Tag -->
+      <canvas id="ex_chart"></canvas>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <select name="target-name" id="target-name">
+  </select>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+listName = ["eguchi", "hiroyuki", "chiaki"];
+listKey = [["eguchi", "hiroyuki", "chiaki", "kanna", "iroha"],["eguchi", "hiroyuki", "chiaki", "kanna", "iroha"],["eguchi", "hiroyuki", "chiaki", "kanna", "iroha"]];
+listValue = [[5,10,15,20,25],[8,10,10,10,10],[25,40,45,50,55]];
+
+const nameSelect = document.getElementById('target-name');
+
+for (var i = 0, len = listName.length; i < len; ++i) {
+  var option = document.createElement("option");
+  option.text = listName[i];
+  option.value = listName[i];
+  nameSelect.appendChild(option);
+}
+
+var ctx = document.getElementById('ex_chart');
+var data = {
+    labels: listKey[0],
+    datasets: [{
+        label: 'Score',
+        data: listValue[0],
+        backgroundColor: 'rgba(255, 100, 100, 1)'
+    }]
+};
+
+var options = {
+    indexAxis: 'y',
+};
+
+var ex_chart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: options
+});
+
+
+nameSelect.addEventListener('change', (e) => {
+
+  ex_chart.data.datasets[0].data = '';
+  ex_chart.destroy();
+
+  var data = {
+      labels: listKey[nameSelect.selectedIndex],
+      datasets: [{
+          label: 'Score',
+          data: listValue[nameSelect.selectedIndex],
+          backgroundColor: 'rgba(255, 100, 100, 1)'
+      }]
+  };
+
+  var options = {
+      indexAxis: 'y',
+  };
+
+  ex_chart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+  });
+
+})
+
+</script>
+</body>
+</html>

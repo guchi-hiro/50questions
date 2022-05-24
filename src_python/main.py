@@ -102,6 +102,21 @@ def compare_answers():
 
     print(compare_list)
 
+    name_list_for_ranking = []
+    key_list_for_ranking = []
+    value_list_for_ranking = []
+
+    for a in compare_list:
+        name_list_for_ranking.append(a.pop('name'))
+        sorted_dict = {k:v for k,v in sorted(a.items(), key=lambda item: item[1])}
+
+        key_list_for_ranking.append(list(sorted_dict.keys())[:5])
+        value_list_for_ranking.append(list(sorted_dict.values())[:5])
+
+    print(name_list_for_ranking)
+    print(key_list_for_ranking)
+    print(value_list_for_ranking)
+
 def generate_ranking():
 
     for i in range(number_of_questions):
@@ -134,9 +149,7 @@ def generate_ranking():
 
             target_persons = list(person.keys())
             random.shuffle(target_persons)
-            target_person_list_of_each_question.append(target_persons[0])
-
-            print(target_person_list_of_each_question)
+            target_person_list_of_each_question.append(str(target_persons[:3]))
 
         ranking_list[questionNo].append(target_person_list_of_each_question)
 
