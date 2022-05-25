@@ -12,14 +12,11 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-number_of_questions = 49
+number_of_questions = 50
 json_load_from_firestore = []
 all_answer_list = []
 ranking_list = []
 target_person_list = []
-
-json_open = open('result.json', 'r', encoding='utf-8')
-json_load = json.load(json_open)
 
 cred = credentials.Certificate("./credential.json")
 firebase_admin.initialize_app(cred)
@@ -30,14 +27,16 @@ for doc in db.collections().__next__().get():
     value = doc.to_dict()
 
     if not ('name' in value.keys() and 'answers' in value.keys()):
-        break
+        continue
 
-#    if len(value['answers']) != number_of_questions:
-#        break
+    if len(value['answers']) != number_of_questions:
+        continue
 
     json_load_from_firestore.append(doc.to_dict())
 
 print(json_load_from_firestore)
+
+json_load = json_load_from_firestore
 
 def generate_answer_list():
 
@@ -47,16 +46,16 @@ def generate_answer_list():
 
         if not ('name' in value.keys() and 'answers' in value.keys()):
             json_load.pop(name_index)
-            break
+            continue
         if len(value['answers']) != number_of_questions:
             json_load.pop(name_index)
-            break
+            continue
 
         try:
             answer_dict.update({'name':value['name']})
 
             for answer_index, answer in enumerate(value['answers']):
-                answer_dict[answer_index] = value['answers'][answer_index]['answer']
+                answer_dict[answer_index] = value['answers'][answer_index]['name']
 
             all_answer_list.append(answer_dict)
 
@@ -86,7 +85,8 @@ def compare_answers():
 
                 a = list(target_answer_list.items())
                 b = list(all_answer_list[target_answer_index].items())
-                score = len(set(a + b))
+                bscore = len(set(a + b)) - 2
+                score = (number_of_questions * 2) - bscore
 
                 target_name_dict.update({value['name'] : score})
 
@@ -100,7 +100,24 @@ def compare_answers():
     except Exception as e:
         print(e)
 
+    print("***********************************************************")
     print(compare_list)
+    print("***********************************************************")
+
+    total_score_dict = {}
+
+    for a in compare_list:
+
+        name = a.get('name')
+
+        total = 0
+        for i in a.values():
+            if isinstance(i, int):
+                total += i
+
+        total_score_dict[name] = total
+
+    print(total_score_dict)
 
     name_list_for_ranking = []
     key_list_for_ranking = []
@@ -108,14 +125,29 @@ def compare_answers():
 
     for a in compare_list:
         name_list_for_ranking.append(a.pop('name'))
-        sorted_dict = {k:v for k,v in sorted(a.items(), key=lambda item: item[1])}
+        sorted_dict = {k:v for k,v in sorted(a.items(), key=lambda item: item[1], reverse=True)}
 
         key_list_for_ranking.append(list(sorted_dict.keys())[:5])
         value_list_for_ranking.append(list(sorted_dict.values())[:5])
 
+    name_list_for_ranking.append('TOP5')
+    name_list_for_ranking.append('LAST5')
+
+    sorted_top_dict = {k:v for k,v in sorted(total_score_dict.items(), key=lambda item: item[1], reverse=True)}
+    sorted_last_dict = {k:v for k,v in sorted(total_score_dict.items(), key=lambda item: item[1])}
+
+    key_list_for_ranking.append(list(sorted_top_dict.keys())[:5])
+    value_list_for_ranking.append(list(sorted_top_dict.values())[:5])
+
+    key_list_for_ranking.append(list(sorted_last_dict.keys())[:5])
+    value_list_for_ranking.append(list(sorted_last_dict.values())[:5])
+
+    print("***********************************************************")
     print(name_list_for_ranking)
     print(key_list_for_ranking)
     print(value_list_for_ranking)
+    print("***********************************************************")
+
 
 def generate_ranking():
 
@@ -126,7 +158,7 @@ def generate_ranking():
         for name_index, value in enumerate(json_load):
 
             try:
-                answer_list.append(value['answers'][i]['answer'])
+                answer_list.append(value['answers'][i]['name'])
             except Exception as e:
                 print(e)
 
