@@ -62,8 +62,6 @@ def generate_answer_list():
         except Exception as e:
             print(e)
 
-    print(all_answer_list)
-
     try:
         pandas.read_json(json.dumps(all_answer_list)).to_excel('answer_list' + datetime.now().strftime("%Y%m%d_%H%M%S")+'.xlsx',index=False)
     except Exception as e:
@@ -100,10 +98,6 @@ def compare_answers():
     except Exception as e:
         print(e)
 
-    print("***********************************************************")
-    print(compare_list)
-    print("***********************************************************")
-
     total_score_dict = {}
 
     for a in compare_list:
@@ -116,8 +110,6 @@ def compare_answers():
                 total += i
 
         total_score_dict[name] = total
-
-    print(total_score_dict)
 
     name_list_for_ranking = []
     key_list_for_ranking = []
@@ -143,9 +135,9 @@ def compare_answers():
     value_list_for_ranking.append(list(sorted_last_dict.values())[:5])
 
     print("***********************************************************")
-    print(name_list_for_ranking)
-    print(key_list_for_ranking)
-    print(value_list_for_ranking)
+    print("listName = " + str(name_list_for_ranking))
+    print("listKey = " + str(key_list_for_ranking))
+    print("listValue = " + str(value_list_for_ranking))
     print("***********************************************************")
 
 
